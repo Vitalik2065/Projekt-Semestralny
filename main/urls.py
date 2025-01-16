@@ -1,31 +1,31 @@
 from django.urls import path
 from . import views
 from django.shortcuts import redirect
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth.decorators import login_required
 
-from .views import todolist, update_task, delete_task, edit_task
+from .views import todolist, update_task, delete_task, edit_task, CustomLoginView
 
 urlpatterns = [
     # Перенаправление на страницу логина
     path('', lambda request: redirect('log', permanent=False)),
 
-    path('todolist/', todolist, name='todolist'),
-    path('todolist/task/create/', todolist, name='task-create'),
-    path('todolist/task/<int:task_id>/update/', update_task, name='task-update'),
-    path('todolist/task/<int:task_id>/delete/', delete_task, name='task-delete'),
-    path('todolist/task/<int:task_id>/edit/', edit_task, name='task-edit'),
+    # Ограниченные маршруты
+    path('todolist/', login_required(todolist), name='todolist'),
+    path('todolist/task/create/', login_required(todolist), name='task-create'),
+    path('todolist/task/<int:task_id>/update/', login_required(update_task), name='task-update'),
+    path('todolist/task/<int:task_id>/delete/', login_required(delete_task), name='task-delete'),
+    path('todolist/task/<int:task_id>/edit/', login_required(edit_task), name='task-edit'),
 
     # Основные маршруты
-    path('about', views.about, name='about'),
-    path('todolist', views.todolist, name='todolist'),
-    path('finance', views.finance, name='finance'),
-    path('home', views.home, name='home'),
-    path('acc', views.acc, name='acc'),
+    path('about', login_required(views.about), name='about'),
+    path('todolist', login_required(views.todolist), name='todolist'),
+    path('finance', login_required(views.finance), name='finance'),
+    path('home', login_required(views.home), name='home'),
+    path('acc', login_required(views.acc), name='acc'),
 
     # Регистрация и логин/логаут
     path('reg', views.user_register, name='reg'),  # Обработчик регистрации
-    path('log', LoginView.as_view(template_name='main/log.html'), name='log'),  # Класс LoginView
+    path('log', views.CustomLoginView.as_view(), name='log'),  # Используем CustomLoginView
     path('logout', LogoutView.as_view(next_page='log'), name='logout'),  # Логаут
 ]
-
-

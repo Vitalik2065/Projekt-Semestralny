@@ -4,6 +4,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .forms import CustomUserCreationForm  # Если создаёшь кастомную форму
+from django.contrib.auth.views import LoginView
+
 
 def todolist(request):
     # Обробка форми додавання задачі
@@ -93,12 +98,13 @@ def acc(request):
 # Функция для регистрации пользователя
 def user_register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)  # Используем кастомную форму
         if form.is_valid():
-            form.save()
-            return redirect('log')  # Перенаправляем на страницу логина
+            user = form.save()
+            login(request, user)  # Автоматически логиним после регистрации
+            return redirect('home')  # Перенаправление на мейн страницу
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'main/reg.html', {'form': form})
 
 # Функция для логина пользователя
@@ -109,17 +115,24 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('acc')  # Перенаправляем на страницу аккаунта
+            return redirect('home')  # Перенаправление на главную страницу
         else:
-            return HttpResponse('Неправильный логин или пароль')
+            context = {'error': 'Неправильный логін або пароль'}  # Сообщение об ошибке
+            return render(request, 'main/log.html', context)
     return render(request, 'main/log.html')
 
-# Функция для логаута пользователя
+# Логаут
 def user_logout(request):
     logout(request)
     return redirect('home')
 
 
+class CustomLoginView(LoginView):
+    template_name = 'main/log.html'  # Шаблон для страницы логина
+
+    def form_invalid(self, form):
+        # Добавляем сообщение об ошибке в контекст
+        return self.render_to_response(self.get_context_data(form=form, error="Неправильный логін або пароль"))
 
 
 
