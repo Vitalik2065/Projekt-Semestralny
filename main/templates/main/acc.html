@@ -1,7 +1,5 @@
-{% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Аккаунт{% endblock %}
-{% block content %}
+{% block title %}{% endblock %}
 <link rel="stylesheet" href="{% static 'main/css/acc.css' %}">
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +15,10 @@
             <h1 class="profile-name">Профіль</h1>
         </div>
         <div class="profile-details">
-            <p><strong>Логін:</strong> 12345</p>
-            <p><strong>Телефон:</strong> +1234567890</p>
-            <p><strong>Про себе:</strong> Тут можна додати короткий опис.</p>
+            <p><strong>Login:</strong> 12345</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+            <p><strong>About:</strong> Тут можна додати короткий опис.</p>
         </div>
     </div>
 </body>
 </html>
-{% endblock %}

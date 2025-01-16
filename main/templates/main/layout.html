@@ -1,5 +1,4 @@
 {% load static %}
-{% load i18n %}
 <!doctype html>
 <html lang="eu">
 <head>
@@ -15,35 +14,26 @@
     <link rel="stylesheet" href="{% static 'main/css/about.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script defer src="{% static 'main/js/translation.js' %}"></script>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="theme-button">
-            <div class="language-switcher">
-                        <a href="{{ request.path }}/en" class="btn btn-primary">EN</a>
-                </div>
-            </div>
-            <button id="theme-toggle" class="fa-solid fa-moon"></button>
-        </div>
-        <div class="logo-container">
-            <img src="{% static 'main/img/logo.png' %}" alt="Logo" class="logo-img">
-            <span class="logo-text">NewEra</span>
-        </div>
-        <nav class="navigation">
-            <h3 class="nav-title">{% translate 'Навігація' %}</h3>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><i class="fas fa-home"></i> Головна</a></li>
-                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link"><i class="fas fa-info"></i> Про нас</a></li>
-                <li class="nav-item"><a href="{% url 'finance' %}" class="nav-link"><i class="fas fa-money-bill"></i> Фінансовий менеджер</a></li>
-                <li class="nav-item"><a href="{% url 'todolist' %}" class="nav-link"><i class="fas fa-list"></i> Ту ду лист</a></li>
-                <li class="nav-item"><a href="{% url 'acc' %}" class="nav-link"><i class="fa-solid fa-user"></i> Аккаунт</a></li>
-            </ul>
-        </nav>
+    <aside>
+        <img src="{% static 'main/img/logo.png' %}" alt="Logo">
+        <span class="logo">NewEra</span>
+        <h3></h3>
+        <ul>
+            <button id="theme-toggle" style="">змінити тему</button>
+            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Головна</li></a>
+            <a href="{% url 'about' %}"><li><i class="fas fa-info"></i> Про нас</li></a>
+            <a href="{% url 'finance' %}"><li><i class="fas fa-money-bill"></i> Фінансовий менеджер</li></a>
+            <a href="{% url 'todolist' %}"><li><i class="fas fa-list"></i> Ту ду лист</li></a>
+            <a href="{% url 'acc' %}"><li><i class="fa-solid fa-user"></i> Аккаунт</li></a>
+        </ul>
     </aside>
-    <main class="main-content">
+    <main>
         {% block content %}
         {% endblock %}
     </main>
-    <script src="{% static 'main/js/light.js' %}"></script>
+<script src="{% static 'main/js/light.js' %}"></script>
 </body>
 </html>
