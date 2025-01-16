@@ -1,10 +1,12 @@
+/* body */
 body {
     background: #202020;
     margin: 0;
     padding: 0;
 }
 
-aside {
+/* Sidebar */
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,78 +23,118 @@ aside {
     box-sizing: border-box;
 }
 
-aside img {
-    width: 80px;
-    margin-bottom: 15px;
-}
-
-aside .logo {
-    font-size: 35px;
-    font-weight: bold;
+/* Theme button */
+.theme-button {
     margin-bottom: 20px;
 }
 
-aside ul {
+/* Logo */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.logo-img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+.logo-text {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Navigation */
+.navigation {
+    width: 100%;
+}
+.nav-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 }
-
-aside ul a {
-    text-decoration: none;
-}
-
-aside ul li {
-    color: #fff;
+.nav-item {
     margin-bottom: 20px;
     transition: all 0.6s ease;
     cursor: pointer;
 }
-
-aside ul li:hover, aside ul a:hover {
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.6s ease, transform 0.3s ease;
+}
+.nav-link:hover {
     color: #eb5959;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-main {
+/* Main */
+.main-content {
     margin-left: 270px;
     padding: 20px;
 }
-
-main .features {
+.features {
     color: #fff;
     text-align: center;
 }
-
-main .features h1 {
+.features h1 {
     font-size: 50px;
+    margin-bottom: 20px;
 }
-
-main .features p {
+.features p {
     max-width: 400px;
     margin: 20px auto;
+    line-height: 1.6;
 }
 
+/* Light theme */
 .light-theme {
     background: #ffffff;
     color: #000;
 }
-
-.light-theme aside {
+.light-theme .sidebar {
     background: #1e90ff;
     color: #000;
     border-right: 5px solid #148fb8;
 }
-
-.light-theme aside ul li {
+.light-theme .nav-link {
     color: #000;
 }
-
-.light-theme aside ul li:hover {
+.light-theme .nav-link:hover {
     color: #ff4d4d;
 }
-
-.light-theme main .features {
+.light-theme .features {
     color: #000;
+}
+
+/* Theme toggle */
+#theme-toggle {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;----
+    transition: all 0.3s ease;
+}
+.light-theme #theme-toggle {
+    color: #fff;
+}
+#theme-toggle:focus {
+    outline: none;
+}
+#theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+.nav-link i {
+    font-size: 18px;
 }

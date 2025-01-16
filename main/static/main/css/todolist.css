@@ -1,154 +1,99 @@
-.progress-container {
-    width: 300px;
-    height: 30px;
-    position: relative;
-    color: #333;
-    text-align: left;
-}
-
-.progress-label {
-    position: absolute;
-    top: 42%;
-    left: 34%;
-    transform: translate(-50%, -50%);
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    pointer-events: none;
-
-}
-
-progress {
-    width: 200px;
-    height: 30px;
-    -webkit-appearance: none;
-    appearance: none;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #f3f3f3;
-}
-
-progress::-webkit-progress-bar {
-    background-color: #f3f3f3;
-}
-
-progress::-webkit-progress-value {
-    background-color: #007bff;
-}
-
-progress::-moz-progress-bar {
-    background-color: #007bff;
-}
-
-/* Стилі для контейнера задач */
-.todo-container {
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-}
-
-/* Заголовок */
 h1 {
     text-align: center;
-    font-size: 2rem;
-    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .todo-form {
     display: flex;
-    width: 100%;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.todo-form input {
+.todo-form input[type="text"] {
     flex: 1;
-    /* Займає всю доступну ширину */
     padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
+    font-size: 16px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    margin-right: 10px;
-    /* Відступ між полем і кнопкою */
-    outline: none;
+    background: #2c2c2c;
+    color: #fff;
 }
 
-.todo-form input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-button[type="submit"] {
-    padding: 10.1px 15px;
-    /* font-size: 1rem; */
-    background-color: #007bff;
-    color: rgb(255, 255, 255);
+.todo-form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background: #4d4d4d;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
-    align-self: stretch;
-    /* Робить кнопку тієї ж висоти, що і текстове поле */
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.todo-form button:hover {
+    background: #eb5959;
 }
 
-
-/* Список задач */
-.todo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.task-item {
+.todo-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background-color: #333;
+    padding: 10px;
     margin-bottom: 10px;
-    border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.task-item:hover {
-    background-color: #474747;
-}
-
-/*Стилі для тексту задачі */
-.task-text {
-    flex-grow: 1;
-    font-size: 1.2rem;
-    color: #ffffff;
-}
-
-/* Стилі для кнопки видалення */
-button.btn-danger {
-    background-color: #e74c3c;
-    border: none;
-    color: white;
+    background: #2c2c2c;
     border-radius: 4px;
-    padding: 11px 13px;
+    color: #fff;
 }
 
-button.btn-danger:hover {
-    background-color: #c0392b;
-}
-
-/*1312312*/
-.task-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.edit-button {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.2rem;
+.todo-list li button {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    padding: 5px 10px;
 }
 
-.edit-button:hover {
-    color: #007bff;
+.todo-list li button:hover {
+    background: #b02a37;
+}
+
+body.light-theme h1 {
+    color: #000;
+}
+
+body.light-theme .todo-form input[type="text"] {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+body.light-theme .todo-form button {
+    background: #007bff;
+    color: #fff;
+}
+
+body.light-theme .todo-form button:hover {
+    background: #0056b3;
+}
+
+body.light-theme .todo-list li {
+    background: #f9f9f9;
+    color: #000;
+}
+
+body.light-theme .todo-list li button {
+    background: #dc3545;
+    color: #fff;
+}
+
+body.light-theme .todo-list li button:hover {
+    background: #b02a37;
+}
+
+body.light-theme .todo-container {
+    background: #f1f1f1;
+    color: #000;
+    border: 1px solid #ddd;
 }

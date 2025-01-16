@@ -1,7 +1,6 @@
 {% load static %}
-{% load i18n %}
 <!doctype html>
-<html lang="eu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,23 +19,23 @@
     <aside class="sidebar">
         <div class="theme-button">
             <div class="language-switcher">
-                        <a href="{{ request.path }}/en" class="btn btn-primary">EN</a>
+                        <a href="{{ request.path|cut:'/en' }}" class="btn btn-primary">UA</a>
                 </div>
             </div>
-            <button id="theme-toggle" class="fa-solid fa-moon"></button>
+            <button id="theme-toggle" class="fa-solid fa-moon theme-toggle"></button>
         </div>
         <div class="logo-container">
             <img src="{% static 'main/img/logo.png' %}" alt="Logo" class="logo-img">
             <span class="logo-text">NewEra</span>
         </div>
         <nav class="navigation">
-            <h3 class="nav-title">{% translate 'Навігація' %}</h3>
+            <h3 class="nav-title">Navigation</h3>
             <ul class="nav-list">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><i class="fas fa-home"></i> Головна</a></li>
-                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link"><i class="fas fa-info"></i> Про нас</a></li>
-                <li class="nav-item"><a href="{% url 'finance' %}" class="nav-link"><i class="fas fa-money-bill"></i> Фінансовий менеджер</a></li>
-                <li class="nav-item"><a href="{% url 'todolist' %}" class="nav-link"><i class="fas fa-list"></i> Ту ду лист</a></li>
-                <li class="nav-item"><a href="{% url 'acc' %}" class="nav-link"><i class="fa-solid fa-user"></i> Аккаунт</a></li>
+                <li class="nav-item"><a href="{% url 'home/en' %}" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="{% url 'about/en' %}" class="nav-link"><i class="fas fa-info"></i> About</a></li>
+                <li class="nav-item"><a href="{% url 'finance/en' %}" class="nav-link"><i class="fas fa-money-bill"></i> Finance manager</a></li>
+                <li class="nav-item"><a href="{% url 'todolist/en' %}" class="nav-link"><i class="fas fa-list"></i> To do list</a></li>
+                <li class="nav-item"><a href="{% url 'acc/en' %}" class="nav-link"><i class="fa-solid fa-user"></i> Profile</a></li>
             </ul>
         </nav>
     </aside>
